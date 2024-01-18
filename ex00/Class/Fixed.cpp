@@ -14,9 +14,10 @@
 
 // ----------Constructor----------
 
-Fixed::Fixed(int entier)
+Fixed::Fixed()
 {
-	this->entier = entier;
+  std::cout << "Default constructor called"<< std::endl;
+	this->number = 0;
 	return;
 }
 
@@ -24,38 +25,39 @@ Fixed::Fixed(int entier)
 
 Fixed::~Fixed()
 {
-	std::cout << "Fixed destroyed" << endl;
+	std::cout << "Destructor called" << std::endl;
 	return;
 }
 
 // ----------Getters---------
 
-int		Fixed::getRawBits(void)
+int		Fixed::getRawBits(void) const
 {
-	return(this->entier_const);
+  std::cout << "getRawBits member function called" << std::endl;
+	return(this->number);
 }
 
 // ----------Setters----------
 
 void	Fixed::setRawBits(int const raw)
 {
-	this->entier_const = raw;
+	this->number = raw;
 }
 
 // ----------Copy_Constructor----------
 
-Fixed::FixedCopy(const Fixed& class_to_cpy)
+Fixed::Fixed(const Fixed& class_to_cpy)
 {
-
+  std::cout << "Copy constructor called" << std::endl;
+  *this = class_to_cpy;
+  return;
 }
 
 // ----------Operator_Overloader----------
 
-Fixed& Fixed::OperatorSurcharger(const Fixed& to_overload)
+Fixed& Fixed::operator=(const Fixed& to_overload)
 {
-	if(this != &class_to_cpy)
-		this->entier = class_to_cpy.entier;
-	return(this);
+  std::cout << "Copy assignement operator called" << std::endl;
+  this->number = to_overload.getRawBits();
+	return(*this);
 }
-
-// ----------Members_Functions----------

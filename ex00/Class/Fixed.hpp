@@ -13,18 +13,20 @@
 #ifndef FIXED_HPP
 #define FIXED_HPP
 
+#include <iostream>
+
 class Fixed
 {
 	private:
-		int 				entier;
-		static int const	entier_const;
+		int 				      number;
+		static int const  nb_bits_fract;
 	public:
-							Fixed(int entier);
-							~Fixed(void);
-							FixedCopy(const Fixed& class_to_cpy);
-		Fixed&				OperatorSurcharger(const Fixed& to_overload);
-		int					getRawBits(void);
-		void				setRawBits(int const raw);
+							        Fixed();
+							        ~Fixed(void);
+							        Fixed(const Fixed& class_to_cpy);
+		Fixed&				    operator=(const Fixed& to_overload);
+		int					      getRawBits(void) const;
+		void				      setRawBits(int const raw);
 
 };
 
