@@ -19,14 +19,20 @@ class Fixed
 {
 	private:
 		int 				      number;
-		static int const  nb_bits_fract;
+		static int const  nb_bits_fract = 8;
 	public:
 							        Fixed();
 							        ~Fixed(void);
+                      Fixed(const int number);
+                      Fixed(const float number);
 							        Fixed(const Fixed& class_to_cpy);
 		Fixed&				    operator=(const Fixed& to_overload);
 		int					      getRawBits(void) const;
 		void				      setRawBits(int const raw);
+    float             toFloat(void) const;
+    int               toInt(void) const;
 };
+
+    std::ostream&     operator<<(std::ostream& out, const Fixed& fixed);
 
 #endif
