@@ -1,4 +1,4 @@
-NAME 			= PremiersPasVersUneClasseUtile
+NAME 			= MaintenantOnPeutParler
 
 CXX				=				c++
 CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
