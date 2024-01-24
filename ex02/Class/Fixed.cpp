@@ -80,6 +80,97 @@ std::ostream& operator << (std::ostream& out, const Fixed& fixed)
 	return (out);
 }
 
+bool Fixed::operator==(const Fixed& fixed) const
+{
+  if(this->getRawBits() == fixed.getRawBits())
+    return(true);
+  return(false);
+}
+
+bool Fixed::operator!=(const Fixed& fixed) const
+{
+  if(this->getRawBits() != fixed.getRawBits())
+    return(true);
+  return(false);
+}
+
+bool Fixed::operator>(const Fixed& fixed) const
+{
+  if(this->getRawBits() > fixed.getRawBits())
+    return(true);
+  return(false);
+}
+
+bool Fixed::operator<(const Fixed& fixed) const
+{
+  if(this->getRawBits() < fixed.getRawBits())
+    return(true);
+  return(false);
+}
+
+bool Fixed::operator>=(const Fixed& fixed) const
+{
+  if(this->getRawBits() >= fixed.getRawBits())
+    return(true);
+  return(false);
+}
+
+bool Fixed::operator<=(const Fixed& fixed) const
+{
+  if(this->getRawBits() <= fixed.getRawBits())
+    return(true);
+  return(false);
+}
+
+Fixed Fixed::operator+(const Fixed& fixed) const
+{
+  Fixed result(this->toFloat() + fixed.toFloat());
+  return(result);
+}
+
+Fixed Fixed::operator-(const Fixed& fixed) const
+{
+  Fixed result(this->toFloat() - fixed.toFloat());
+  return(result);
+}
+
+Fixed Fixed::operator*(const Fixed& fixed) const
+{
+  Fixed result(this->toFloat() * fixed.toFloat());
+  return(result);
+}
+
+Fixed Fixed::operator/(const Fixed& fixed) const
+{
+  Fixed result(this->toFloat() / fixed.toFloat());
+  return(result);
+}
+
+Fixed& Fixed::operator++(void)
+{
+  this->number++;
+  return(*this);
+}
+
+Fixed Fixed::operator++(int)
+{
+  Fixed tmp(*this);
+  operator++();
+  return(tmp);
+}
+
+Fixed& Fixed::operator--(void)
+{
+  this->number--;
+  return(*this);
+}
+
+Fixed Fixed::operator--(int)
+{
+  Fixed tmp(*this);
+  operator--();
+  return(tmp);
+}
 // ----------Member_Function----------
 
 float Fixed::toFloat(void) const
@@ -91,3 +182,33 @@ int   Fixed::toInt(void) const
 {
   return ((this->number) >> this->nb_bits_fract);
 }
+
+Fixed Fixed::min(Fixed& a, Fixed& b)
+{
+  if(a <= b)
+    return(a);
+  return(b);
+}
+
+const Fixed Fixed::min(const Fixed& a, const Fixed& b)
+{
+  if(a <= b)
+    return(a);
+  return(b);
+}
+
+Fixed Fixed::max(Fixed& a, Fixed& b)
+{
+  if(a >= b)
+    return(a);
+  return(b);
+}
+
+const Fixed Fixed::max(const Fixed& a, const Fixed& b)
+{
+  if(a >= b)
+    return(a);
+  return(b);
+}
+
+

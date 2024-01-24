@@ -18,19 +18,37 @@
 class Fixed
 {
 	private:
-		int 				      number;
-		static int const  nb_bits_fract = 8;
+		int 				        number;
+		static int const    nb_bits_fract = 8;
 	public:
-							        Fixed();
-							        ~Fixed(void);
-                      Fixed(const int number);
-                      Fixed(const float number);
-							        Fixed(const Fixed& class_to_cpy);
-		Fixed&				    operator=(const Fixed& to_overload);
-		int					      getRawBits(void) const;
-		void				      setRawBits(int const raw);
-    float             toFloat(void) const;
-    int               toInt(void) const;
+							          Fixed();
+							          ~Fixed(void);
+                        Fixed(const int number);
+                        Fixed(const float number);
+							          Fixed(const Fixed& class_to_cpy);
+		Fixed&				      operator=(const Fixed& to_overload);
+		int					        getRawBits(void) const;
+		void				        setRawBits(int const raw);
+    float               toFloat(void) const;
+    int                 toInt(void) const;
+    static Fixed        min(Fixed& a, Fixed& b);
+    static const Fixed  min(const Fixed& a, const Fixed& b);
+    static Fixed        max(Fixed& a, Fixed& b);
+    static const Fixed  max(const Fixed& a, const Fixed& b);
+    bool                operator==(const Fixed& fixed) const;
+    bool                operator!=(const Fixed& fixed) const;
+    bool                operator>(const Fixed& fixed) const;
+    bool                operator<(const Fixed& fixed) const;
+    bool                operator>=(const Fixed& fixed) const;
+    bool                operator<=(const Fixed& fixed) const;
+    Fixed               operator+(const Fixed& fixed) const;
+    Fixed               operator-(const Fixed& fixed) const;
+    Fixed               operator*(const Fixed& fixed) const;
+    Fixed               operator/(const Fixed& fixed) const;
+    Fixed&              operator++(void);
+    Fixed               operator++(int);
+    Fixed&              operator--(void);
+    Fixed               operator--(int);
 };
 
     std::ostream&     operator<<(std::ostream& out, const Fixed& fixed);
